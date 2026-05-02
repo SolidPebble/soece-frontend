@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+/* ── Hero wrapper ── */
+.gl-hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background: #09101d;
+}
+
+.gl-hero-wrapper .circuit-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: 0;
+}
+
+.gl-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        to bottom,
+        rgba(4, 8, 18, 0.35) 0%,
+        rgba(4, 8, 18, 0.45) 60%,
+        rgba(9, 16, 29, 0.92) 100%
+    );
+}
+
+.gl-hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gl-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 40px 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* ── Glass title card ── */
+.gl-title-card {
+    width: 510px;
+    min-height: 118px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 24px;
+}
+
+.gl-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.4px;
+    margin: 0;
+}
+
+.gl-highlight {
+    color: #00df9a;
+}
+
+.gl-title-line {
+    width: 54px;
+    height: 4px;
+    margin-top: 12px;
+    border-radius: 999px;
+    background: #00df9a;
+}
+
+/* ── Gallery section ── */
+.gallery-section {
+    background: linear-gradient(135deg, #0a0f1e 0%, #0d1b2a 50%, #0a1628 100%);
+    padding: 60px 40px 80px;
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Gallery grid — 3 column masonry like screenshot ── */
+.gallery-grid {
+    columns: 3;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Gallery card — tall rectangular, no fixed height ── */
+.gallery-item {
+    position: relative;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #0d1b2a;
+}
+
+.gallery-img {
+    width: 100%;
+    height: auto;           /* natural image height — no crop */
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Overlay on hover */
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.82) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.04);
+}
+
+.item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+    text-align: center;
+    padding: 0 12px;
+}
+
+.item-subtitle {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #00df9a;
+    opacity: 0.9;
+    text-align: center;
+    padding: 0 12px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+    .gallery-grid {
+        columns: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .gl-hero-wrapper {
+        height: 300px;
+    }
+
+    .gl-title-card {
+        width: calc(100% - 40px);
+        min-height: 100px;
+        padding: 18px 16px;
+        border-radius: 14px;
+    }
+
+    .gallery-section {
+        padding: 40px 16px 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        columns: 1;
+    }
+}
